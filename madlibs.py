@@ -53,11 +53,16 @@ def show_madlib_form():
 
 @app.route('/madlib')
 def show_madlib():
-    answer = request.args.get("answer")
+    color = request.args.get("color")
+    noun = request.args.get("noun")
+    adjective = request.args.get("adjective")
 
-    if answer:
-        return render_template("madlib.html")
-    else:
+    if color and noun and adjective:
+        return render_template("madlib.html",
+                               color=color,
+                               noun=noun,
+                               adjective=adjective)
+    else: 
         return render_template("goodbye.html")
 
 
